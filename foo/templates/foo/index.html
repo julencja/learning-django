@@ -1,0 +1,28 @@
+{% if logged_in %}
+<h1>Welcome {{user}}</h1>
+
+Add your foo:
+<form action="add" method="post">
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit">
+</form>
+
+{% else %}
+<h1><a href="">Log in to ad your foo!</a></h1>
+{% endif %}
+
+<h2>All foos:</h2>
+
+<table>
+<tr>
+	<td>Bar</td>
+	<td>Author</td>
+</tr>	
+{% for item in items %}
+<tr>
+	<td>{{item.bar}}</td>
+	<td>{{item.author}}</td>
+</tr>	
+{% endfor %}
+</table>

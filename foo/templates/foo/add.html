@@ -1,0 +1,18 @@
+{% if form.errors %}
+<h1>There were some errors in your foo</h1>
+Add your foo:
+<form action="add" method="post">
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit">
+</form>
+
+{% else %}
+<h1>Thanks {{user}} for adding this new foo!</h1>
+id: {{foo.id}}<br>
+bar: {{foo.bar}}<br>
+author: {{foo.author}}<br>
+date added: {{foo.date_added}}
+{% endif %}
+<a href="{% url 'index' %}">Back</a>
+
